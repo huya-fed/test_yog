@@ -32,7 +32,7 @@
       "host" : "192.168.85.128",
       "ref"  : "origin/master", //需要部署的分支
       "repo" : "https://github.com/huya-fed/test_yog.git",
-      "path" : "/home/ganxietx/yog", //web目录
+      "path" : "/home/ganxietx/yog/source", //web目录
       "post-deploy" : "npm install && pm2 startOrRestart start.json --env production"
     }
   }
