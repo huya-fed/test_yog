@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+	<meta name="format-detection" content="telphone=no, email=no"><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="MobileOptimized" content="320">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="full-screen" content="yes">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="browsermode" content="application">
+	<meta name="x5-page-mode" content="app">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="author" content="xiejinlong, 303182519@qq.com">
+	<meta name="keywords" content="标记内容太短，则搜索引擎可能不会认为这些内容相关。另外标记不应超过 874 个字符">
+	<meta name="description" content="不超过150个字符">
+	<title>虎牙移动端模板</title>
+	<link rel="stylesheet" href="http://127.0.0.1:8085/static/home/css/pages/pages-module.css">
+	    
+</head>
+<body>
+	
+	<%
+	    var APP_URL = 'http://www.huya.com/'
+	    for(var i = 0, len=list.length; i<len; i ++){
+	        var data = list[i];
+	%>
+	<li class="game-live-item">
+	    <%
+	        var url = APP_URL + data['privateHost'];
+
+	        if(data['screenType'] == 1 && data['liveSourceType'] == 2){
+	            var screenshot = data['screenshot']+'?imageview/4/0/w/190/h/338/rotate/270';
+	        }else{
+	            var screenshot = data['screenshot']+'?imageview/4/0/w/338/h/190/blur/1';
+	        }
+
+
+	    %>
+	    <a href="<%=url%>" class="video-info new-clickstat" target="_blank">
+	        <img class="pic" data-original="<%=screenshot%>" src="http://assets.dwstatic.com/amkit/p/duya/common/img/default_live.jpg" alt="<%=data['nick']%>的直播" title="<%=data['nick']%>的直播">
+	        <% if(data['recommendTagName']){%><em class="tag tag-recommend"><%=data['recommendTagName']%></em><% }%>
+	        <div class="item-mask"></div>
+	        <i class="btn-link__hover_i"></i>
+	        <% if(data['isBluRay']==1){ %><em class="tag tag-blue">蓝光</em><% }%> 
+	    </a>
+	    <a href="<%=url%>" class="title new-clickstat" target="_blank" target="_blank"><%= data['introduction']%></a>
+	    <span class="txt">
+	        <span class="avatar fl">
+	            <img data-original="<%=data['avatar180']%>" src="http://assets.dwstatic.com/amkit/p/duya/common/img/default_profile.jpg" alt="<%=data['nick']%>" title="<%=data['nick']%>">
+	            <i class="nick" title="<%=data['nick']%>"><%=data['nick']%></i>
+	        </span>
+	        <%
+	            if( data['gameHostName'] != ""){
+	                var gameTypeUrl = "http://www.huya.com/g/" + data['gameHostName'];
+	            }else{
+	                var gameTypeUrl = "http://www.huya.com/g/" + data['gid'];
+	            }
+	        %>
+	        <span class="game-type fr"><a target="_blank" href="<%=gameTypeUrl%>" title="<%=data['gameFullName']%>"><%=data['gameFullName']%></a></span>
+
+	        <span class="num"><i class="num-icon"></i><i class="js-num"><%=data['totalCount']%></i></span>
+	    </span>
+	</li>
+	<%}%>
+
+	<script type="text/javascript" src="http://127.0.0.1:8085/static/home/lib/base.js"></script>
+	
+	<script type="text/javascript" src="http://127.0.0.1:8085/static/home/pkg/js/index_aio.js"></script>
+<script type="text/javascript">
+		require('home:client/modules/index')
+	</script>
+	
+</body>
+</html>
