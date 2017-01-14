@@ -1,6 +1,8 @@
 {
   "name"        : "yog-xjl",  // 应用名称
   "script"      : "./app.js",  // 实际启动脚本
+  "instances": 4,
+  "exec_mode": "cluster",
   "watch": [  // 监控变化的目录，一旦变化，自动重启
     "app",
     "conf",

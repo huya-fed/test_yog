@@ -5,10 +5,32 @@ var util = require('../lib/util.js');*/
 
 
 module.exports = function(req, res){
-	var xx = yog.ralP('LiveList');
-	xx.then(function(data){
+	var LiveList = yog.ralP('home_http',{
+        query: {                       
+	        'm':'LiveList',
+			'do':'getLiveListByPage',
+			'tagAll':0,
+			'page':1
+	    }
+	});
+
+	var SidebarNav = yog.ralP('home_http',{
+        query: {                       
+	        'm':'SidebarNav',
+			'do':'getItems'
+	    }
+	});
+
+
+	
+
+
+	Promise.all([LiveList,SidebarNav]).then(function(posts){
 		res.render('home/views/index.tmpl', {
-			list : data.data.datas
-		});
+			list : posts[0].data,
+			leftNav : posts[1]
+		});	
+	}).catch(function(){
+		//todo
 	})
 };
