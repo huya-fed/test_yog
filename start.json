@@ -4,8 +4,7 @@
   "instances": 4,
   "watch": [  // 监控变化的目录，一旦变化，自动重启
     "app",
-    "conf",
-    "views"
+    "conf"
   ],
   "ignore_watch" : [  // 从监控目录中排除
     "node_modules", 
@@ -30,8 +29,7 @@
       "host" : "192.168.85.128",
       "ref"  : "origin/master", //需要部署的分支
       "repo" : "https://github.com/huya-fed/test_yog.git",
-      "path" : "/home/ganxietx/yog", //web目录
-      "post-deploy" : "pm2 startOrRestart start.json —-env production"
+      "path" : "/home/ganxietx/yog"
     }
   }
 }
