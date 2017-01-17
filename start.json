@@ -10,10 +10,6 @@
   "error_file" : "./pm2_logs/app-err.log",  // 错误日志路径
   "out_file"   : "./pm2_logs/app-out.log",  // 普通日志路径
   "log_date_format" : "YYYY-MM-DD HH:mm Z",
-  "env": {
-    "YOG_DEBUG": true, // 环境参数，当前指定为生产环境   pm2 start start.json --env dev
-    "YOG_ENV": "dev" // 加载不同的配置，比如 conf/ral/test.dev.js
-  },
   "env_production" : {
     "NODE_ENV": "production"  // pm2 start start.json --env production
   },
