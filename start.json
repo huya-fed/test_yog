@@ -2,6 +2,17 @@
   "name"        : "yog-xjl",  // 应用名称
   "script"      : "./app.js",  // 实际启动脚本
   "instances": 4,
+  "watch": [  // 监控变化的目录，一旦变化，自动重启
+    "app",
+    "conf",
+    "views"
+  ],
+  "ignore_watch" : [  // 从监控目录中排除
+    "node_modules", 
+    "pm2_logs",
+    "log",
+    "static"
+  ],
   "exec_mode": "cluster",
   "watch_options": {
     "followSymlinks": false
